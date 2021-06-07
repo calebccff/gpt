@@ -346,6 +346,8 @@ pub(crate) fn file_read_header<D: Read + Seek>(file: &mut D, offset: u64) -> Res
     );
     reader.seek(SeekFrom::Current(8))?;
 
+    println!("sigstr: {}", sigstr);
+
     if sigstr != "EFI PART" {
         return Err(Error::new(ErrorKind::Other, "invalid GPT signature"));
     };
